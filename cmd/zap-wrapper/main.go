@@ -1,3 +1,4 @@
+// Package main implements entrypoint for application.
 package main
 
 import (
@@ -66,16 +67,16 @@ func run(directory, domain string) error {
 			{
 				Name: "passiveScan-config",
 				Type: "passiveScan-config",
-				Parameters: map[string]bool{
-					"scanOnlyInScope": true,
+				Parameters: zapconfig.PassiveScanParameters{
+					ScanOnlyInScope: true,
 				},
 			},
 			{
 				Name: "spider",
 				Type: "spider",
-				Parameters: map[string]int{
-					"maxDuration": 60,
-					"maxDepth":    1,
+				Parameters: zapconfig.SpiderParameters{
+					MaxDuration: 60,
+					MaxDepth:    1,
 				},
 			},
 			{
@@ -85,21 +86,21 @@ func run(directory, domain string) error {
 			{
 				Name: "pdf",
 				Type: "report",
-				Parameters: map[string]string{
-					"reportTitle":       "Automated Vulnerability Scan",
-					"reportDescription": "This is an automated report",
-					"template":          "traditional-pdf",
+				Parameters: zapconfig.ReportParameters{
+					ReportTitle:       "Automated Vulnerability Scan",
+					ReportDescription: "This is an automated report",
+					Template:          "traditional-pdf",
 					// @todo, This is import. We pick this report.pdf file up if/when we post to Slack.
-					"reportFile": "report",
+					ReportFile: "report",
 				},
 			},
 			{
 				Name: "json",
 				Type: "report",
-				Parameters: map[string]string{
-					"template": "traditional-json",
+				Parameters: zapconfig.ReportParameters{
+					Template: "traditional-json",
 					// @todo, This is import. We pick this report.json file up when we report on the results.
-					"reportFile": "report",
+					ReportFile: "report",
 				},
 			},
 		},
