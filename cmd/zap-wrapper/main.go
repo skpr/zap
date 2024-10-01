@@ -23,7 +23,8 @@ func main() {
 	vp.SetEnvPrefix("ZAP_WRAPPER")
 
 	var (
-		endpoint  = vp.GetString("endpoint")
+		endpoint = vp.GetString("endpoint")
+
 		directory = vp.GetString("directory")
 		scanType  = vp.GetString("type")
 	)
@@ -98,6 +99,10 @@ func run(directory, endpoint, scanType string) error {
 		t.AddRow(detail.Severity, detail.Name, detail.Description)
 	}
 	t.Render()
+
+	if report.High > 0 {
+		return fmt.Errorf("results marked as high were found")
+	}
 
 	return nil
 }
