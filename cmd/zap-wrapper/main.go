@@ -155,6 +155,14 @@ func getPassiveScanConfig(endpoint string) (*zapconfig.Config, error) {
 				},
 			},
 			{
+				Name: "spiderAjax",
+				Type: "spiderAjax",
+				Parameters: zapconfig.SpiderAjaxParameters{
+					MaxDuration:   60,
+					MaxCrawlDepth: 1,
+				},
+			},
+			{
 				Name: "passiveScan-wait",
 				Type: "passiveScan-wait",
 			},
