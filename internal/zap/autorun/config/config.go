@@ -42,6 +42,12 @@ type SpiderParameters struct {
 	MaxDepth    int32 `yaml:"maxDepth,omitempty"`
 }
 
+// SpiderAjaxParameters to Job config.
+type SpiderAjaxParameters struct {
+	MaxDuration   int32 `yaml:"maxDuration,omitempty"`
+	MaxCrawlDepth int32 `yaml:"maxCrawlDepth,omitempty"`
+}
+
 // PassiveScanParameters to Job config.
 type PassiveScanParameters struct {
 	ScanOnlyInScope bool `yaml:"scanOnlyInScope,omitempty"`
